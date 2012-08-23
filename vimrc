@@ -1,6 +1,6 @@
 set autoindent
 syntax on
-filetype plugin on
+colorscheme desert
 
 " Use .as for ActionScript files, not Atlas files.
 au Bufread,BufNewFile *.as set filetype=actionscript
@@ -20,16 +20,10 @@ set incsearch
 set ruler
 set wildmenu
 
-noremap <C-S> :update<CR>
-vnoremap <C-S> <C-C>:update<CR>
-inoremap <C-S> <C-O>:update<CR>
-
-map <C-j> :lnext<CR>
-map <C-k> :lprevious<CR>
-
 set undodir=~/.vim/undodir
 set undofile
 set undolevels=50
 set undoreload=50
 
-
+:set number "show line numbers
+"filetype plugin on
