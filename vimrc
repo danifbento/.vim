@@ -1,3 +1,4 @@
+set nocompatible
 set autoindent
 syntax on
 colorscheme desert
@@ -20,7 +21,13 @@ set incsearch
 set ruler
 set wildmenu
 
-set undodir=~/.vim/undodir
+
+noremap <C-S> :update<CR>
+vnoremap <C-S> <C-C>:update<CR>
+inoremap <C-S> <C-O>:update<CR>
+map <C-j> :lnext<CR>
+map <C-k> :lprevious<CR>
+
 set undofile
 set undolevels=50
 set undoreload=50
