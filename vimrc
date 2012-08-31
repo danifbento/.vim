@@ -34,3 +34,10 @@ set undoreload=50
 
 :set number "show line numbers
 "filetype plugin on
+
+autocmd BufNewFile *.as so ~/.vim/template/as_header.txt
+autocmd BufNewFile *.as exe "1," . 10 . "g/@file:.*/s//@file: " .expand("%")
+autocmd BufNewFile *.as exe "1," . 10 . "g/@date:.*/s//@date: " .strftime("%d-%m-%Y")
+autocmd BufwritePre,FileWritePre *.as execute "normal ma"
+autocmd BufwritePre,FileWritePre *.as exe "1," . 10 . "g/@lastmodified:.*/s/@lastmodified:.*/@lastmodified: " .strftime("%c")
+autocmd BufWritePost,FileWritePost *.as execute "normal `a"
