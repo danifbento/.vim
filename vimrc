@@ -5,6 +5,7 @@ colorscheme desert
 
 " Use .as for ActionScript files, not Atlas files.
 au Bufread,BufNewFile *.as set filetype=actionscript
+au Syntax as runtime! ~/.vim/syntax/actionscript.vim
 
 " Put these in a autocmd group, so that we can delete them easily.
 augroup vimrc
