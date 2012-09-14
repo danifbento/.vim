@@ -49,9 +49,9 @@ autocmd BufwritePre,FileWritePre *.as execute "normal ma"
 autocmd BufwritePre,FileWritePre *.as exe "1," . 10 . "g/@lastmodified:.*/s/@lastmodified:.*/@lastmodified: " .strftime("%c")
 autocmd BufWritePost,FileWritePost *.as execute "normal `a"
 
-autocmd BufNewFile *.c so ~/.vim/template/c_header.txt
-autocmd BufNewFile *.c exe "1," . 10 . "g/@file:.*/s//@file: " .expand("%")
-autocmd BufNewFile *.c exe "1," . 10 . "g/@date:.*/s//@date: " .strftime("%d-%m-%Y")
-autocmd BufwritePre,FileWritePre *.c execute "normal ma"
-autocmd BufwritePre,FileWritePre *.c exe "1," . 10 . "g/@lastmodified:.*/s/@lastmodified:.*/@lastmodified: " .strftime("%c")
-autocmd BufWritePost,FileWritePost *.c execute "normal `a"
+autocmd BufNewFile *.c,*.h so ~/.vim/template/c_header.txt
+autocmd BufNewFile *.c,*.h exe "1," . 10 . "g/@file:.*/s//@file: " .expand("%")
+autocmd BufNewFile *.c,*.h exe "1," . 10 . "g/@date:.*/s//@date: " .strftime("%d-%m-%Y")
+autocmd BufwritePre,FileWritePre *.c,*.h execute "normal ma"
+autocmd BufwritePre,FileWritePre *.c,*.h exe "1," . 10 . "g/@lastmodified:.*/s/@lastmodified:.*/@lastmodified: " .strftime("%c")
+autocmd BufWritePost,FileWritePost *.c,*.h execute "normal `a"
