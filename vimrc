@@ -5,6 +5,7 @@ colorscheme desert
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+set modeline
 
 set smarttab
 
@@ -35,9 +36,34 @@ inoremap <C-S> <C-O>:update<CR>
 map <C-j> :lnext<CR>
 map <C-k> :lprevious<CR>
 
-set undofile
-set undolevels=50
-set undoreload=50
+if isdirectory($HOME . '/.vim/backup') == 0
+	:silent !mkdir -p ~/.vim/backup > /dev/null 2>&1
+endif
+set backupdir -=.
+set backupdir +=.
+set backupdir -=~/
+set backupdir ^=~/.vim/backup
+set backupdir ^=./.vim-backup/
+set backup
+
+if isdirectory($HOME . '/.vim/swap') == 0
+	:silent !mkdir -p ~/.vim/swap > /dev/null 2>&1
+endif
+set directory=./.vim-swap//
+set directory+=~/.vim/swap//
+set directory+=~/tmp//
+set directory+=.
+
+set viminfo+=n~/.vim/viminfo
+
+if exists("+undofile")
+	if isdirectory($HOME . '/.vim/undo') == 0
+		:silent !mkdir -p ~/.vim/undo > /dev/null 2>&1
+	endif
+	set undodir=./.vim-undo//
+	set undodir+=~/.vim/undo//
+	set undofile
+endif
 
 :set number "show line numbers
 "filetype plugin on
@@ -49,11 +75,11 @@ autocmd BufwritePre,FileWritePre *.as execute "normal ma"
 autocmd BufwritePre,FileWritePre *.as exe "1," . 10 . "g/@lastmodified:.*/s/@lastmodified:.*/@lastmodified: " .strftime("%c")
 autocmd BufWritePost,FileWritePost *.as execute "normal `a"
 
-autocmd BufNewFile *.c,*.h so ~/.vim/template/c_header.txt
-autocmd BufNewFile *.py so ~/.vim/template/py_header.txt
-autocmd BufNewFile *.c,*.h,*.py exe "1," . 10 . "g/@file:.*/s//@file: " .expand("%")
-autocmd BufNewFile *.c,*.h,*.py exe "1," . 10 . "g/@date:.*/s//@date: " .strftime("%d-%m-%Y")
-autocmd BufwritePre,FileWritePre *.c,*.h,*.py execute "normal ma"
-autocmd BufwritePre,FileWritePre *.c,*.h,*.py exe "1," . 10 . "g/@lastmodified:.*/s/@lastmodified:.*/@lastmodified: " .strftime("%c")
-autocmd BufWritePost,FileWritePost *.c,*.h,*.py execute "normal `a"
+"autocmd BufNewFile *.c,*.h so ~/.vim/template/c_header.txt
+autocmd BufNewFile *.py so ~/.vim/template/pyheader.txt
+"autocmd BufNewFile *.c,*.h,*.py exe "1," . 10 . "g/@file:.*/s//@file: " .expand("%")
+"autocmd BufNewFile *.c,*.h,*.py exe "1," . 10 . "g/@date:.*/s//@date: " .strftime("%d-%m-%Y")
+"autocmd BufwritePre,FileWritePre *.c,*.h,*.py execute "normal ma"
+"autocmd BufwritePre,FileWritePre *.c,*.h,*.py exe "1," . 10 . "g/@lastmodified:.*/s/@lastmodified:.*/@lastmodified: " .strftime("%c")
+"autocmd BufWritePost,FileWritePost *.c,*.h,*.py execute "normal `a"
 
