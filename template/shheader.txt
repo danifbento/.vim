@@ -1,0 +1,18 @@
+:insert
+#!/usr/bin/env bash
+# vim: autoindent tabstop=2 shiftwidth=2 expandtab softtabstop=2 filetype=sh
+#
+# ...
+
+PATH="${PATH}:"
+
+###############################################################################
+#
+# ...
+#
+# Globals:
+#  VAR: ...
+# Returns
+#  0: ...
+###############################################################################
+

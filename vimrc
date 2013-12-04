@@ -76,7 +76,10 @@ autocmd BufwritePre,FileWritePre *.as exe "1," . 10 . "g/@lastmodified:.*/s/@las
 autocmd BufWritePost,FileWritePost *.as execute "normal `a"
 
 "autocmd BufNewFile *.c,*.h so ~/.vim/template/c_header.txt
+
 autocmd BufNewFile *.py so ~/.vim/template/pyheader.txt
+autocmd BufNewFile *.sh so ~/.vim/template/shheader.txt
+
 "autocmd BufNewFile *.c,*.h,*.py exe "1," . 10 . "g/@file:.*/s//@file: " .expand("%")
 "autocmd BufNewFile *.c,*.h,*.py exe "1," . 10 . "g/@date:.*/s//@date: " .strftime("%d-%m-%Y")
 "autocmd BufwritePre,FileWritePre *.c,*.h,*.py execute "normal ma"
